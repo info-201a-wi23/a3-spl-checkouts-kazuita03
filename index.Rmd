@@ -3,84 +3,67 @@ title: "A3: SPL Library Checkouts"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+library("scales")
+
+# source all R files
+source('summary.R')
+```
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+The data I have chosen is a data set that represents items checked out at least 10 times a month from 2017 to 2023. In my summary, we are analyzing four things:
+
+1. Over time (2017 to 2023), how many physical copies were checked out?
+2. Over time (2017 to 2023), how many publications per year?
+3. How many material types were checked out from 2017 to 2023?
+4. How many publications per month throughout all of the years (2017 to 2023)?
+
+
+We are seeing how these values change over time since with the pandemic hitting in the middle of the selected time period, it's interesting to see how each value will differ.  
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+With our data set and what we are analyzing, we are focused on 5 variables. CheckoutMonth, Checkout, Material Type, Year, And type of usage. After making four different graphs, we can see that physical copies decrease over time compared to digital copies. This is probably because of COVID and how remote our communities because during the big pandemic. In the number of checkouts per year, we can see that there is a decrease, but not consistent. With a line of best fit, we see a decrease, but just looking at the values per year, you can tell it's not consistent with the line. The amount of material, we can see that books and ebooks were the most popular while the other being not so popular. Lastly, in the number of checkouts Per months, we can see the most are checked out at the beginning of the year. I think this is interesting because it may tie to people coming up with New Years Resolution of reading more or being more knowldgebale which may require checking out books and other forms of media. 
 
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+The Data was collected by the Seattle Public Library. The data includes many types of parameters like usage class, checkout type, material type, checkout Year, checkout month, checkouts, titles, ISBN's, creators, subjects, publishers, and publication years. This data comes from multiple current and historical sources. But for digital items, it comes from the vendors such as Overdrive, hoopla, Freegal, and RBDigital and their data. Physical items come from the Legrady artwork data archives. But from 2016, they changed it to the Horizon ILS. When working with this data, we need to consider if it's right to base this data and use it for other parts of the world. Since this data is from the Seattle Public Library, we can't assume that all other libraries will have the same data since people tend to live in communities that they find similarities in. This means that maybe in another place in the world may not have access to some sorts of media Seattle does. This makes this data set hard to expand outside of just Seattle since we cannot assume anything about other places. It would be interesting to see the dataset of a library somewhere else in the world and see the similarities and difference. 
 
+### Number of Physical and Digital Copies Per Year
 
-### First Trends Over Time Chart
+This chart shows the amount of copies of usage types over the years (2017 to 2023). We can clearly see that there is a decline in physical copies and in increase in digital copies overall. We can assume this is from the impact of the pandemic. You can see in the physical copies that in 2020, there is a big decline. This makes sense because that was the year COVID-19 hit. 
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+```{r graph1, fig.width=12}
+graph1
 ```
 
-### Second Trends Over Time Chart
+### Number of Checkouts Per Year
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+The second graph shows the numbers of checkout per year (2017 to 2023). We can also see there that there is a deacrease in checkouts over thea year specifically in 2020, when the pandemic hit. The line of best fit shows us there is a decrease, but if we look closely at each indiviudal point, we can see that there was the biggest decrease in 2020, but then a slow increase back in the next two years. 
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r graph2, fig.width=12}
+graph2
 ```
 
-### Your Choice
+### Amount Per Material Type
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+In the amount per material type graph, we can see it represents the amount of each material type of the library. We can see there is a lot of the Book and the ebook as those are popular material types. There are other popular ones like video, but as we can see many are not enough to compete against the books and ebooks. 
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r graph3, fig.width=12}
+graph3
 ```
 
+### Number of Checkouts Per Month
+
+In the number of checkouts per month graph we can see each month with the number of checkouts per month through the years 2017-2023. We can see for the most part they are really similar to each other except for Janurary. I think this is interesting because we can believe that many create new years resolutions to read more or become more knowledgable, so there may be more people who checkout in this month. But since many don't stick with their resolution, that could explain the decrease in the other months.
+
+```{r graph4, fig.width=12}
+graph4
+```
 
